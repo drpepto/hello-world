@@ -1,0 +1,36 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <!-- <li><a ng-href="#">Contact</a></li> -->
+  </ul>
+  <h3 class="text-muted">Hello World</h3>
+</div>
+
+<div class="jumbotron">
+  <h1>Hello World!</h1>
+</div>
+
+<div class="row marketing">
+  <p>People have said:</p>
+  <!-- ng-repeat is bound to $scope.said -->
+  <ul ng-repeat="say in said">
+    <!-- delete($index) will pass the position (index) of the element clicked in the $scope.said array -->
+    <!-- ng-click will call the corresponding javascript function defined as part of $scope -->
+    <!-- That is, $scope.delete = function(index) { ... } -->
+    <li>{{say.name}} | <span ng-click="delete($index)" class="glyphicon glyphicon-remove"></span>
+  </ul>
+
+  <label>Say Hello!</label>
+  <!-- Input is bound to $scope.say. Changes by the user to the
+  textbox will immediately be reflected in $scope.say via Angular's
+  two way binding --> 
+  <select ng-model="say" ng-options="h.name for h in hello_list">
+  </select>
+
+  <!-- When button is clicked, $scope.add will be called -->
+  <button ng-click="add()">Add</button>
+</div>
+
+<div class="footer">
+  <p>Footer <h1 style="color:red">{{errors}}</h1></p>
+</div>

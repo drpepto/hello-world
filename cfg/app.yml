@@ -1,0 +1,48 @@
+---
+app:
+ name: Test App
+ environments:
+   list: [dev, integration, staging, production]
+   default_environment: dev
+
+environments:
+ dev:
+  persistence: 
+    type: memory
+  oauth_providers: 
+    list: [mock]
+    default_provider: mock
+  app_cache: memory
+
+ integration:
+  persistence: 
+    type: mongo
+    connect:
+      host: mongo1
+      port: 27217
+  oauth_providers: 
+    list: [google, facebook, github, twitter]
+    default_provider: google
+  app_cache: dalli
+
+ staging: 
+  persistence:
+    type: mongo
+    connect:
+      host: mongo1
+      port: 27217
+  oauth_providers: 
+    list: [google, facebook, github, twitter]
+    default_provider: google
+  app_cache: dalli
+
+ prod: 
+  persistence:
+    type: mongo
+    connect:
+      host: mongo1
+      port: 27217
+  oauth_providers: 
+    list: [google, facebook, github, twitter]
+    default_provider: google
+  app_cache: dalli
